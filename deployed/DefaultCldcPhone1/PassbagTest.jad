@@ -1,0 +1,11 @@
+MIDlet-1: PassBag,,midbase.PassBagMiddlet
+MIDlet-Delete-Confirm: Are You Sure ?
+MIDlet-Description: Password Keeper
+MIDlet-Info-URL: http://www.mehmetim.com
+MIDlet-Jar-Size: 82860
+MIDlet-Jar-URL: PassbagTest.jar
+MIDlet-Name: Passbag Password Keeper
+MIDlet-Vendor: MiM
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.1

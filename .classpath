@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="src" path="localization"/>
+	<classpathentry kind="con" path="org.elipse.mtj.JavaMEContainer/Java(TM) Platform Micro Edition SDK 3.0/DefaultCldcPhone1"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files (x86)/Eclipse/configuration/org.eclipse.osgi/bundles/343/1/.cp/lib/floggy-persistence-framework-1.3.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://floggy.sourceforge.net/modules/floggy-persistence-framework/1.3.1/floggy-persistence-framework/apidocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="D:/Projects/Mobile/PassbagTest/floggy-persistence-framework-impl.jar">
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="net/sourceforge/floggy/persistence/impl/*"/>
+			<accessrule kind="nonaccessible" pattern="net/sourceforge/floggy/persistence/impl/migration/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Java_ME_platform_SDK_3.0/lib/jsr177_1.0-crypto.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

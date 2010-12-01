@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locales default-locale="en-US" destination="localization" package="midbase.localization">
+   <locale country="US" language="en">
+      <entry key="ACCOUNT_NAME" value="Account Name"/>
+      <entry key="FIELD_NAME" value="Field Name"/>
+      <entry key="FIELD_VALUE" value="Field Value"/>
+      <entry key="NOTE" value="Note"/>
+      <entry key="BACK" value="Back"/>
+      <entry key="CATEGORIES" value="Categories"/>
+      <entry key="EXIT" value="Exit"/>
+      <entry key="ACCOUNTS" value="Accounts"/>
+      <entry key="NEW_ACCOUNT" value="New Account"/>
+      <entry key="ACCOUNT_DETAILS" value="Details"/>
+      <entry key="CANCEL" value="Cancel"/>
+      <entry key="SAVE" value="Save"/>
+      <entry key="DELETE" value="Delete"/>
+      <entry key="NEW" value="NEW"/>
+      <entry key="EDIT" value="Edit"/>
+      <entry key="ADD_NEW_FIELD" value="Add New Field"/>
+   </locale>
+   <locale country="TR" language="tr">
+      <entry key="ACCOUNT_NAME" value="Hesap Adı"/>
+      <entry key="FIELD_NAME" value="Alan Adı"/>
+      <entry key="FIELD_VALUE" value="Alan Değeri"/>
+      <entry key="NOTE" value="Not"/>
+      <entry key="BACK" value="Geri"/>
+      <entry key="CATEGORIES" value="Kategoriler"/>
+      <entry key="EXIT" value="Çıkış"/>
+      <entry key="ACCOUNTS" value="Hesaplar"/>
+      <entry key="NEW_ACCOUNT" value="Yeni Hesap"/>
+      <entry key="ACCOUNT_DETAILS" value="Detaylar"/>
+      <entry key="CANCEL" value="Vazgeç"/>
+      <entry key="SAVE" value="Kaydet"/>
+      <entry key="ADD_NEW_FIELD" value="Yeni alan ekle"/>
+      <entry key="DELETE" value="Sil"/>
+      <entry key="NEW" value="Yeni"/>
+      <entry key="EDIT" value="Düzenle"/>
+   </locale>
+   <locale country="ES" language="es">
+      <entry key="ACCOUNT_NAME" value="Nombre de la cuenta"/>
+      <entry key="FIELD_NAME" value="Campo de nombre"/>
+      <entry key="DELETE" value="Eliminar"/>
+   </locale>
+</locales>
