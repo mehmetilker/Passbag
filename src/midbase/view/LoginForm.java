@@ -7,12 +7,17 @@ import javax.microedition.lcdui.Form;
 import javax.microedition.lcdui.StringItem;
 import javax.microedition.lcdui.TextField;
 
+import midbase.localization.L10nConstants;
+import midbase.localization.L10nResources;
+
 /**
  * @author milk
  *
  */
 public class LoginForm extends Form {
 
+	private L10nResources resources;
+	
 	public StringItem explanationStringItem;
 	public TextField passwordTextField;
 	
@@ -25,9 +30,10 @@ public class LoginForm extends Form {
 	/**
 	 * @param arg0
 	 */
-	public LoginForm(boolean firstTimeForm) {
-		super("Giriþ");
+	public LoginForm(L10nResources resources, boolean firstTimeForm) {
+		super(resources.getString(L10nConstants.keys.LOGIN_FORM_TITLE));
 		
+		this.resources = resources;
 		this.firstTime = firstTimeForm;
 		
 		if (firstTimeForm)				

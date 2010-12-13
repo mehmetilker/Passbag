@@ -17,6 +17,8 @@
       <entry key="NEW" value="NEW"/>
       <entry key="EDIT" value="Edit"/>
       <entry key="ADD_NEW_FIELD" value="Add New Field"/>
+      <entry key="APP_NAME" value="PassBag"/>
+      <entry key="LOGIN_FORM_TITLE" value="PassBag Login"/>
    </locale>
    <locale country="TR" language="tr">
       <entry key="ACCOUNT_NAME" value="Hesap Adı"/>
@@ -35,10 +37,13 @@
       <entry key="DELETE" value="Sil"/>
       <entry key="NEW" value="Yeni"/>
       <entry key="EDIT" value="Düzenle"/>
+      <entry key="APP_NAME" value="PassBag"/>
+      <entry key="LOGIN_FORM_TITLE" value="PassBag Giriş"/>
    </locale>
    <locale country="ES" language="es">
       <entry key="ACCOUNT_NAME" value="Nombre de la cuenta"/>
       <entry key="FIELD_NAME" value="Campo de nombre"/>
       <entry key="DELETE" value="Eliminar"/>
+      <entry key="APP_NAME" value="PassBag"/>
    </locale>
 </locales>

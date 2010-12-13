@@ -14,9 +14,6 @@ import javax.microedition.lcdui.List;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.midlet.MIDletStateChangeException;
 
-import midbase.localization.L10nConstants;
-import midbase.localization.L10nResources;
-
 import midbase.component.CustomChoiceGroup;
 import midbase.component.CustomTextField;
 import midbase.data.CategoryRepository;
@@ -28,6 +25,8 @@ import midbase.domain.Entry;
 import midbase.domain.Field;
 import midbase.domain.Title;
 import midbase.domain.UserSettings;
+import midbase.localization.L10nConstants;
+import midbase.localization.L10nResources;
 import midbase.security.ChriptoHelper;
 import midbase.view.CategoryList;
 import midbase.view.EntryForm;
@@ -35,16 +34,15 @@ import midbase.view.EntryList;
 import midbase.view.LoginForm;
 import net.sourceforge.floggy.persistence.PersistableManager;
 
-
 public class PassBagMiddlet extends MIDlet implements CommandListener {
 
 	private DisplayManager manager;
-	L10nResources resources = L10nResources.getL10nResources(L10nConstants.locales.EN_US);
+	L10nResources resources = L10nResources.getL10nResources(L10nConstants.locales.TR_TR);
 	
 	private Command exitCommand = new Command(resources.getString(L10nConstants.keys.EXIT), Command.EXIT, 60);
 	
 	private Command loginFormOKCommand;
-	
+		
 	private midbase.view.CategoryList categoryListView;
 	private midbase.view.EntryList entryListView;
 	private midbase.view.EntryForm entryFormView;
@@ -99,7 +97,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		this.categoryListView = this.getCategoryListScreen();
 		
 		//TODO:
-		this.cipher = "mytestppassword0".getBytes();
+		//this.cipher = "mytestppassword0".getBytes();
 		
 		//this.manager.next(this.categoryListView);
 		
@@ -174,7 +172,8 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 				this.cipher = cipherTemp.getBytes();
 				this.manager.next(this.categoryListView);
 	
-			}			
+			}	
+			
 		}
 		
 		//** Category List Commands
@@ -246,20 +245,14 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	 * @see javax.microedition.midlet.MIDlet#pauseApp()
 	 */
 	protected void pauseApp() {}
-		
-	private void printMemoryDetails(String place){
-		System.out.println(place);
-		System.out.println("Total Memory:" + Runtime.getRuntime().totalMemory());
-		System.out.println("Free Memory:" + Runtime.getRuntime().freeMemory());
-		System.out.println("");
-	}
 	
 	private LoginForm getLoginFormScreen(boolean firsTime){
-		LoginForm loginForm = new LoginForm(firsTime);
+		LoginForm loginForm = new LoginForm(this.resources, firsTime);
 		this.loginFormOKCommand = new Command("Giriþ", Command.OK, 1);
 		
 		loginForm.setCommandListener(this);
 		loginForm.addCommand(this.loginFormOKCommand);		
+		loginForm.addCommand(this.exitCommand);
 		
 		return loginForm;
 	}
@@ -384,8 +377,13 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	private void SetActiveCategoryId() {
 		int selectedCategoryIndex = ((List)this.categoryListView).getSelectedIndex();
 		this.ActiveCategoryId = this.categoryRepository.GetCategories()[selectedCategoryIndex].GetId();
+	}	
+	
+	private void printMemoryDetails(String place){
+		System.out.println(place);
+		System.out.println("Total Memory:" + Runtime.getRuntime().totalMemory());
+		System.out.println("Free Memory:" + Runtime.getRuntime().freeMemory());
+		System.out.println("");
 	}
-
-		
 	
 }
