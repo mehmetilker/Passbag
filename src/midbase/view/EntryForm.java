@@ -82,7 +82,7 @@ public class EntryForm extends Form {
 		AccountNameTextField.setString(form.getName());
 		this.CategoryId = form.getCategory().GetId();
 		NoteTextField.setString(form.getNote());
-		
+		this.append(new Spacer(16, 1));
 		Field[] fields = form.getFields();
 		
 		for (int i=0; i < fields.length; i++){
@@ -111,6 +111,7 @@ public class EntryForm extends Form {
 			String decryptedValue = this.chriptoHelper.Dec(encryptedValue, this.cipher);
 			CustomTextField encTextField = new CustomTextField(this.resources.getString(L10nConstants.keys.FIELD_VALUE), decryptedValue, 32, TextField.ANY);			
 			this.append(encTextField);
+			this.append(new Spacer(16, 1));
 			//
 		}		
     }
@@ -120,7 +121,8 @@ public class EntryForm extends Form {
     	return this.entry;
     }
     
-    public void addField(){    	
+    public void addField(){    
+    	this.append(new Spacer(16, 1));
     	CustomChoiceGroup fieldChoice = new CustomChoiceGroup("Alan Seçimi", Choice.POPUP);
     	for (int n=0; n < this.fieldTitles.length; n++){
 			fieldChoice.append(this.fieldTitles[n].getValue(), null);			
@@ -129,9 +131,6 @@ public class EntryForm extends Form {
     	
     	CustomTextField textField = new CustomTextField("Alan Deðeri", null, 32, TextField.ANY);
     	this.append(textField);
-    	
-    	Spacer spacer = new Spacer(16, 1);
-    	this.append(spacer);
     }
 	
 }

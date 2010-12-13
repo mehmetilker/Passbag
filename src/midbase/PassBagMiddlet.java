@@ -36,6 +36,8 @@ import net.sourceforge.floggy.persistence.PersistableManager;
 
 public class PassBagMiddlet extends MIDlet implements CommandListener {
 
+	String locale = System.getProperty("microedition.locale");
+	
 	private DisplayManager manager;
 	L10nResources resources = L10nResources.getL10nResources(L10nConstants.locales.TR_TR);
 	
@@ -72,6 +74,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	UserSettingsRepository userSettingsRepository = new UserSettingsRepository(this.persistableManager);
 		
 	int ActiveCategoryId;
+	String ActiveCategoryName;
 	
 	ChriptoHelper chriptoHelper = new ChriptoHelper();
 	private byte[] cipher;	
@@ -182,7 +185,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 				printMemoryDetails("Category list command-before");				
 				SetActiveCategoryId();
 				Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);			
-				this.manager.next(getEntryListScreen(entries));		
+				this.manager.next(getEntryListScreen(this.ActiveCategoryName, entries));		
 				printMemoryDetails("Category list command-after");		
 			}
 			
@@ -217,13 +220,15 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 				Alert alert = new Alert("Bilgi", "Hesap Kaydedildi", null, AlertType.INFO);
 				//alert.setTimeout(Alert.FOREVER);
 				Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);			
-				this.manager.getDisplay().setCurrent(alert, getEntryListScreen(entries));
+				this.manager.getDisplay().setCurrent(alert, getEntryListScreen(this.ActiveCategoryName, entries));
 			}
 			
-			if (command == this.entryFormCancelCommand){
-				Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);			
+			if (command == this.entryFormCancelCommand){				
 				Alert alert = new Alert("Uyarý", "Emin misiniz ?", null, AlertType.CONFIRMATION);
-				this.manager.getDisplay().setCurrent(alert, getEntryListScreen(entries));
+				alert.setTimeout(Alert.FOREVER);
+				alert.addCommand(deleteEntryOkCommand);
+				alert.addCommand(deleteEntryCancelCommand);
+				this.manager.getDisplay().setCurrent(alert);
 			}
 			
 			if (command == entryFormAddFieldCommand){
@@ -231,8 +236,24 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 			}
 		}
 		
-	}	
+		if (command == deleteEntryCancelCommand)
+		{
+			Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
+			this.manager.getDisplay().setCurrent(getEntryListScreen(this.ActiveCategoryName, entries));
+		}
+		if (command == deleteEntryOkCommand)
+		{
+			//Entry entry = this.entryFormView.getOriginalEntry();
+			//this.entryRepository.delete(entry);
+			Alert alert = new Alert("Bilgi", "Kayýt silinmiþtir.", null, AlertType.WARNING);
+			Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
+			this.manager.getDisplay().setCurrent(alert, getEntryListScreen(this.ActiveCategoryName, entries));
+		}
 		
+	}	
+
+	 Command deleteEntryOkCommand = new Command("Evet", Command.CANCEL, 0);
+	 Command deleteEntryCancelCommand = new Command("Vazgeç", Command.SCREEN, 0);
 	
 	/* (non-Javadoc)
 	 * @see javax.microedition.midlet.MIDlet#destroyApp(boolean)
@@ -277,7 +298,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		return categoryList;
 	}
 	
-	private EntryList getEntryListScreen(Vector v) {
+	private EntryList getEntryListScreen(String categoryName, Vector v) {
 		printMemoryDetails("Get Entry List first");
 		
 		if (this.entryListView != null){
@@ -286,7 +307,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 			return this.entryListView;
 		}
 		
-		EntryList entryListView = new EntryList(v);
+		EntryList entryListView = new EntryList(categoryName, v);
 		entryListView.setCommandListener(this);
 		//entryListView.setSelectCommand(this.selectEntryFormCommand);//Orta tus
 		this.createEntryFormCommand = new Command(this.resources.getString(L10nConstants.keys.NEW_ACCOUNT), Command.ITEM, 1);
@@ -377,6 +398,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	private void SetActiveCategoryId() {
 		int selectedCategoryIndex = ((List)this.categoryListView).getSelectedIndex();
 		this.ActiveCategoryId = this.categoryRepository.GetCategories()[selectedCategoryIndex].GetId();
+		this.ActiveCategoryName = this.categoryRepository.GetCategories()[selectedCategoryIndex].GetName();
 	}	
 	
 	private void printMemoryDetails(String place){

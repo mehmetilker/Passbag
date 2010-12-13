@@ -25,7 +25,8 @@ public class CategoryList extends List {
 	public CategoryList(Category[] list, L10nResources resources) {		
 		super(null, Choice.IMPLICIT);
 		//this.resources = resources;
-		this.setTitle(resources.getString(L10nConstants.keys.CATEGORIES));
+		String title = resources.getString(L10nConstants.keys.APP_NAME) + " " + resources.getString(L10nConstants.keys.CATEGORIES);
+		this.setTitle(title);
 	
 		for(int i=0; i < list.length; i++)
 			this.append(list[i].GetName(), getImageWarning(list[i].GetId()));

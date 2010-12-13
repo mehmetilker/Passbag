@@ -22,8 +22,8 @@ public class EntryList extends List {
 	/**
 	 * @param Entry List to create list
 	 */
-	public EntryList(Entry[] list) {
-		super("Kayýtlar", Choice.IMPLICIT);
+	public EntryList(String categoryName, Entry[] list) {
+		super(categoryName, Choice.IMPLICIT);
 		this.entries = list;
 		
 		for(int i=0, length = list.length; i < length; i++)
@@ -33,8 +33,8 @@ public class EntryList extends List {
 	/**
 	 * @param Entry List to create list
 	 */
-	public EntryList(Vector list) {
-		super("Kayýtlar", Choice.IMPLICIT);
+	public EntryList(String categoryName, Vector list) {
+		super(categoryName, Choice.IMPLICIT);
 
 		this.entryListVector = list;
 		
