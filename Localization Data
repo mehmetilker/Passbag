@@ -21,6 +21,10 @@
       <entry key="LOGIN_FORM_TITLE" value="PassBag Login"/>
       <entry key="PASSWORD" value="Pasword"/>
       <entry key="ENTER_YOUR_PASSWORD" value="Enter Your Password"/>
+      <entry key="FIRST_TIME_PASSWORD" value="First time password"/>
+      <entry key="REPEAT_PASSWORD" value="Repeat password"/>
+      <entry key="LOGIN_PASSWORD" value="Login Password"/>
+      <entry key="REENTER_YOUR_PASSWORD" value="Re-enter your password"/>
    </locale>
    <locale country="TR" language="tr">
       <entry key="ACCOUNT_NAME" value="Hesap Adı"/>
@@ -43,11 +47,17 @@
       <entry key="LOGIN_FORM_TITLE" value="PassBag Giriş"/>
       <entry key="PASSWORD" value="Şifre"/>
       <entry key="ENTER_YOUR_PASSWORD" value="Şifrenizi giriniz"/>
+      <entry key="FIRST_TIME_PASSWORD" value="İlk giriş şifresi"/>
+      <entry key="REPEAT_PASSWORD" value="Şifre tekrar"/>
+      <entry key="LOGIN_PASSWORD" value="Giriş şifresi"/>
+      <entry key="REENTER_YOUR_PASSWORD" value="Şifrenizi tekrar giriniz"/>
    </locale>
    <locale country="ES" language="es">
       <entry key="ACCOUNT_NAME" value="Nombre de la cuenta"/>
       <entry key="FIELD_NAME" value="Campo de nombre"/>
       <entry key="DELETE" value="Eliminar"/>
       <entry key="APP_NAME" value="PassBag"/>
+   </locale>
+   <locale country="FR" language="fr">
    </locale>
 </locales>

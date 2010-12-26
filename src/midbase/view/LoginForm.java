@@ -44,11 +44,11 @@ public class LoginForm extends Form {
 	}
 
 	private void initializeFirstTimeForm() {
-		this.explanationStringItem = new StringItem("Ýlk Giriþ þifresi", null);
+		this.explanationStringItem = new StringItem(resources.getString(L10nConstants.keys.FIRST_TIME_PASSWORD), null);
 		this.passwordTextField = new TextField(resources.getString(L10nConstants.keys.PASSWORD), null, 16, TextField.PASSWORD);
 		
-		this.explanation2StringItem = new StringItem("Þifrenizi tekrar giriniz:", null);
-		this.password2TextField = new TextField("Þifre Tekrar", null, 16, TextField.PASSWORD);
+		this.explanation2StringItem = new StringItem(resources.getString(L10nConstants.keys.REENTER_YOUR_PASSWORD), null);
+		this.password2TextField = new TextField(resources.getString(L10nConstants.keys.REPEAT_PASSWORD), null, 16, TextField.PASSWORD);
 				
 		this.append(new Spacer(16, 1));
 		this.append(this.explanationStringItem);
@@ -59,8 +59,8 @@ public class LoginForm extends Form {
 	}
 
 	private void initializeForm() {
-		this.explanationStringItem = new StringItem("Giriþ þifresi", "Þifrenizi giriniz:");
-		this.passwordTextField = new TextField("Þifre", null, 16, TextField.PASSWORD);
+		this.explanationStringItem = new StringItem(resources.getString(L10nConstants.keys.LOGIN_PASSWORD), resources.getString(L10nConstants.keys.ENTER_YOUR_PASSWORD));
+		this.passwordTextField = new TextField(resources.getString(L10nConstants.keys.PASSWORD), null, 16, TextField.PASSWORD);
 		
 		this.append(this.explanationStringItem);
 		this.append(this.passwordTextField);		

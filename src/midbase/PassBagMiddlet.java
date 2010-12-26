@@ -39,7 +39,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	String locale = System.getProperty("microedition.locale");
 	
 	private DisplayManager manager;
-	L10nResources resources = L10nResources.getL10nResources(L10nConstants.locales.TR_TR);
+	L10nResources resources = L10nResources.getL10nResources(L10nConstants.locales.EN_US);
 	
 	private Command exitCommand = new Command(resources.getString(L10nConstants.keys.EXIT), Command.EXIT, 60);
 	
@@ -104,7 +104,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		
 		//this.manager.next(this.categoryListView);
 		
-		//TODO : icerde kayit olup olmama durumuna göre
+		//TODO : icerde kayit olup olmama durumuna gï¿½re
 		UserSettings userSettings = this.userSettingsRepository.get();
 		if (userSettings == null)
 			this.manager.next(getLoginFormScreen(true));
@@ -143,7 +143,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 				
 				if (loginForm.firstTime){
 					if (!password.equals(loginForm.password2TextField.getString())){
-						Alert alert = new Alert("Uyarý", "Þifre tekrarý tutmuyor", null, AlertType.WARNING);
+						Alert alert = new Alert("Uyarï¿½", "ï¿½ifre tekrarï¿½ tutmuyor", null, AlertType.WARNING);
 						this.manager.getDisplay().setCurrent(alert, loginForm);
 						return;
 					}
@@ -163,8 +163,8 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 								userSettings.getValidationData(),
 								cipherTemp.getBytes());						
 					} catch (Exception e) {
-						Alert alert = new Alert("Uyarý",
-								"Girilen þifre yanlýþtýr", null,
+						Alert alert = new Alert("Uyarï¿½",
+								"Girilen ï¿½ifre yanlï¿½ï¿½tï¿½r", null,
 								AlertType.WARNING);
 						// alert.setTimeout(Alert.FOREVER);
 						this.manager.getDisplay().setCurrent(alert,
@@ -204,7 +204,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 			if (command == List.SELECT_COMMAND || command == this.selectEntryFormCommand){
 				int selectedEntryIndex = ((EntryList)displayable).getSelectedIndex();
 				if (selectedEntryIndex == -1){
-					this.manager.next(new Alert("Uyarý", "Hesap seçmelisiniz !", null, AlertType.WARNING));
+					this.manager.next(new Alert("Uyarï¿½", "Hesap seï¿½melisiniz !", null, AlertType.WARNING));
 				}
 				Entry entry = ((EntryList)displayable).getSelectedEntry(selectedEntryIndex);			
 				EntryForm entryForm = getEntryFormScreen(this.ActiveCategoryId, entry);				
@@ -224,7 +224,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 			}
 			
 			if (command == this.entryFormCancelCommand){				
-				Alert alert = new Alert("Uyarý", "Emin misiniz ?", null, AlertType.CONFIRMATION);
+				Alert alert = new Alert("UyarÄ±", "Emin misiniz ?", null, AlertType.CONFIRMATION);
 				alert.setTimeout(Alert.FOREVER);
 				alert.addCommand(deleteEntryOkCommand);
 				alert.addCommand(deleteEntryCancelCommand);
@@ -245,7 +245,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		{
 			//Entry entry = this.entryFormView.getOriginalEntry();
 			//this.entryRepository.delete(entry);
-			Alert alert = new Alert("Bilgi", "Kayýt silinmiþtir.", null, AlertType.WARNING);
+			Alert alert = new Alert("Bilgi", "KayÄ±t silinmiÅŸtir.", null, AlertType.WARNING);
 			Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
 			this.manager.getDisplay().setCurrent(alert, getEntryListScreen(this.ActiveCategoryName, entries));
 		}
@@ -253,7 +253,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	}	
 
 	 Command deleteEntryOkCommand = new Command("Evet", Command.CANCEL, 0);
-	 Command deleteEntryCancelCommand = new Command("Vazgeç", Command.SCREEN, 0);
+	 Command deleteEntryCancelCommand = new Command("VazgeÃ§", Command.SCREEN, 0);
 	
 	/* (non-Javadoc)
 	 * @see javax.microedition.midlet.MIDlet#destroyApp(boolean)
@@ -269,7 +269,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	
 	private LoginForm getLoginFormScreen(boolean firsTime){
 		LoginForm loginForm = new LoginForm(this.resources, firsTime);
-		this.loginFormOKCommand = new Command("Giriþ", Command.OK, 1);
+		this.loginFormOKCommand = new Command("GiriÅŸ", Command.OK, 1);
 		
 		loginForm.setCommandListener(this);
 		loginForm.addCommand(this.loginFormOKCommand);		
@@ -284,7 +284,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		this.selectCategoryCommand = new Command(this.resources.getString(L10nConstants.keys.ACCOUNTS), Command.OK, 1);
 		this.settingsCommand = new Command("Ayarlar", Command.ITEM, 1);
 		this.newCategoryCommand = new Command("Yeni", Command.ITEM, 1);
-		this.editCategoryCommand = new Command("Düzenle", Command.ITEM, 1);
+		this.editCategoryCommand = new Command("DÃ¼zenle", Command.ITEM, 1);
 		this.deleteCategoryCommand = new Command("Sil", Command.ITEM, 1);
 		
 		categoryList.setCommandListener(this);
