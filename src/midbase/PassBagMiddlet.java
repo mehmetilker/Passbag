@@ -143,7 +143,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 				
 				if (loginForm.firstTime){
 					if (!password.equals(loginForm.password2TextField.getString())){
-						Alert alert = new Alert("Uyar�", "�ifre tekrar� tutmuyor", null, AlertType.WARNING);
+						Alert alert = new Alert("Alert", "Re-enter password does not some with the old one.", null, AlertType.WARNING);
 						this.manager.getDisplay().setCurrent(alert, loginForm);
 						return;
 					}
@@ -163,18 +163,16 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 								userSettings.getValidationData(),
 								cipherTemp.getBytes());						
 					} catch (Exception e) {
-						Alert alert = new Alert("Uyar�",
-								"Girilen �ifre yanl��t�r", null,
+						Alert alert = new Alert("Alert",
+								"Password is wrong", null,
 								AlertType.WARNING);
 						// alert.setTimeout(Alert.FOREVER);
 						this.manager.getDisplay().setCurrent(alert,
 								getLoginFormScreen(false));
 					}
 				}
-
 				this.cipher = cipherTemp.getBytes();
-				this.manager.next(this.categoryListView);
-	
+				this.manager.next(this.categoryListView);	
 			}	
 			
 		}
@@ -204,7 +202,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 			if (command == List.SELECT_COMMAND || command == this.selectEntryFormCommand){
 				int selectedEntryIndex = ((EntryList)displayable).getSelectedIndex();
 				if (selectedEntryIndex == -1){
-					this.manager.next(new Alert("Uyar�", "Hesap se�melisiniz !", null, AlertType.WARNING));
+					this.manager.next(new Alert("Alert", "You should choose account !", null, AlertType.WARNING));
 				}
 				Entry entry = ((EntryList)displayable).getSelectedEntry(selectedEntryIndex);			
 				EntryForm entryForm = getEntryFormScreen(this.ActiveCategoryId, entry);				
@@ -217,14 +215,14 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		if (displayable.getClass() == EntryForm.class){
 			if (command == entryFormSaveCommand){
 				SaveEntry((EntryForm)displayable);			
-				Alert alert = new Alert("Bilgi", "Hesap Kaydedildi", null, AlertType.INFO);
+				Alert alert = new Alert("Info", "You account has been saved.", null, AlertType.INFO);
 				//alert.setTimeout(Alert.FOREVER);
 				Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);			
 				this.manager.getDisplay().setCurrent(alert, getEntryListScreen(this.ActiveCategoryName, entries));
 			}
 			
 			if (command == this.entryFormCancelCommand){				
-				Alert alert = new Alert("Uyarı", "Emin misiniz ?", null, AlertType.CONFIRMATION);
+				Alert alert = new Alert("Alert", "Are you sure ?", null, AlertType.CONFIRMATION);
 				alert.setTimeout(Alert.FOREVER);
 				alert.addCommand(deleteEntryOkCommand);
 				alert.addCommand(deleteEntryCancelCommand);
@@ -245,15 +243,15 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 		{
 			//Entry entry = this.entryFormView.getOriginalEntry();
 			//this.entryRepository.delete(entry);
-			Alert alert = new Alert("Bilgi", "Kayıt silinmiştir.", null, AlertType.WARNING);
+			Alert alert = new Alert("Alert", "Record has been deleted.", null, AlertType.WARNING);
 			Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
 			this.manager.getDisplay().setCurrent(alert, getEntryListScreen(this.ActiveCategoryName, entries));
 		}
 		
 	}	
 
-	 Command deleteEntryOkCommand = new Command("Evet", Command.CANCEL, 0);
-	 Command deleteEntryCancelCommand = new Command("Vazgeç", Command.SCREEN, 0);
+	 Command deleteEntryOkCommand = new Command("Yes", Command.CANCEL, 0);
+	 Command deleteEntryCancelCommand = new Command("Cancel", Command.SCREEN, 0);
 	
 	/* (non-Javadoc)
 	 * @see javax.microedition.midlet.MIDlet#destroyApp(boolean)
@@ -269,7 +267,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	
 	private LoginForm getLoginFormScreen(boolean firsTime){
 		LoginForm loginForm = new LoginForm(this.resources, firsTime);
-		this.loginFormOKCommand = new Command("Giriş", Command.OK, 1);
+		this.loginFormOKCommand = new Command("OK", Command.OK, 1);
 		
 		loginForm.setCommandListener(this);
 		loginForm.addCommand(this.loginFormOKCommand);		

@@ -33,7 +33,7 @@ public class EntryForm extends Form {
     		int categoryId, Title[] fieldTitles, 
     		ChriptoHelper chriptoHelper, byte[] chipher,
     		L10nResources resources){
-    	super("Hesap"); 
+    	super("Account"); 
     	this.setTitle(resources.getString(L10nConstants.keys.ACCOUNT_NAME));
     	
     	this.fieldTitles = fieldTitles;
@@ -51,7 +51,7 @@ public class EntryForm extends Form {
     		int categoryId, Entry entry, Title[] fieldTitles,
     		ChriptoHelper chriptoHelper, byte[] chipher,
     		L10nResources resources){
-    	super("Hesap");   
+    	super("Account");   
     	this.setTitle(resources.getString(L10nConstants.keys.ACCOUNT_NAME));
     	
     	this.entry = entry;
@@ -103,7 +103,7 @@ public class EntryForm extends Form {
 			}
 			this.append(fieldChoice);
 			
-			//CustomTextField textField = new CustomTextField("Alan Deðeri", fields[i].getValue(), 32, TextField.ANY);			
+			//CustomTextField textField = new CustomTextField("Alan Deï¿½eri", fields[i].getValue(), 32, TextField.ANY);			
 			//this.append(textField);
 			
 			//enc test
@@ -123,13 +123,13 @@ public class EntryForm extends Form {
     
     public void addField(){    
     	this.append(new Spacer(16, 1));
-    	CustomChoiceGroup fieldChoice = new CustomChoiceGroup("Alan Seçimi", Choice.POPUP);
+    	CustomChoiceGroup fieldChoice = new CustomChoiceGroup("Field Options", Choice.POPUP);
     	for (int n=0; n < this.fieldTitles.length; n++){
 			fieldChoice.append(this.fieldTitles[n].getValue(), null);			
 		}
     	this.append(fieldChoice);
     	
-    	CustomTextField textField = new CustomTextField("Alan Deðeri", null, 32, TextField.ANY);
+    	CustomTextField textField = new CustomTextField("Field Value", null, 32, TextField.ANY);
     	this.append(textField);
     }
 	

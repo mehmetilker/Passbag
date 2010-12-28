@@ -11,10 +11,10 @@ public class TitleRepository {
 	public TitleRepository(){
 		this.titles = new Title[4];
 		
-		titles[0] = new Title("Kullanýcý Adý");
-		titles[1] = new Title("Þifre");
-		titles[2] = new Title("Parola");
-		titles[3] = new Title("Müþteri No");
+		titles[0] = new Title("User Name");
+		titles[1] = new Title("Password");
+		titles[2] = new Title("Parole");
+		titles[3] = new Title("Customer No");
 	}
 	
 	public Title[] GetFieldTitles(){

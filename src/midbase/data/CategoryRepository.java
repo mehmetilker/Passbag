@@ -12,10 +12,10 @@ public class CategoryRepository {
 	public CategoryRepository(){
 		this.categories = new Category[4];
 		
-		categories[0] = new Category(1, "Ýþletim sistemi");
-		categories[1] = new Category(2, "E.Posta");
-		categories[2] = new Category(3, "Banka");
-		categories[3] = new Category(4, "Diðer");		
+		categories[0] = new Category(1, "Operating System");
+		categories[1] = new Category(2, "E-Mail");
+		categories[2] = new Category(3, "Bank");
+		categories[3] = new Category(4, "Other");		
 	}
 	
 	public Category[] GetCategories(){
