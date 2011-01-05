@@ -80,6 +80,7 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 	private byte[] cipher;	
 			
 	String backKey = resources.getString(L10nConstants.keys.BACK);
+	Displayable EntryFormDisplay;
 	
 	public PassBagMiddlet() {
 		printMemoryDetails("Const top");
@@ -225,33 +226,35 @@ public class PassBagMiddlet extends MIDlet implements CommandListener {
 				Alert alert = new Alert("Alert", "Are you sure ?", null, AlertType.CONFIRMATION);
 				alert.setTimeout(Alert.FOREVER);
 				alert.addCommand(deleteEntryOkCommand);
-				alert.addCommand(deleteEntryCancelCommand);
+				alert.addCommand(entryFormBackCommand);
+				alert.setCommandListener(this);
+				this.EntryFormDisplay = displayable;
 				this.manager.getDisplay().setCurrent(alert);
 			}
 			
 			if (command == entryFormAddFieldCommand){
 				((EntryForm)displayable).addField();
 			}
-		}
+		}	
 		
-		if (command == deleteEntryCancelCommand)
-		{
-			Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
-			this.manager.getDisplay().setCurrent(getEntryListScreen(this.ActiveCategoryName, entries));
-		}
 		if (command == deleteEntryOkCommand)
 		{
 			//Entry entry = this.entryFormView.getOriginalEntry();
 			//this.entryRepository.delete(entry);
-			Alert alert = new Alert("Alert", "Record has been deleted.", null, AlertType.WARNING);
+			//Alert alert = new Alert("Alert", "Record has been deleted.", null, AlertType.WARNING);
 			Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
-			this.manager.getDisplay().setCurrent(alert, getEntryListScreen(this.ActiveCategoryName, entries));
+			this.manager.getDisplay().setCurrent(getEntryListScreen(this.ActiveCategoryName, entries));
 		}
-		
+		if (command == entryFormBackCommand)
+		{
+			//Vector entries = this.entryRepository.getEntriesByCategory(Entry.class, this.ActiveCategoryId);				
+			this.manager.getDisplay().setCurrent(this.EntryFormDisplay); //(((Alert)displayable));
+			
+		}
 	}	
 
 	 Command deleteEntryOkCommand = new Command("Yes", Command.CANCEL, 0);
-	 Command deleteEntryCancelCommand = new Command("Cancel", Command.SCREEN, 0);
+	 Command entryFormBackCommand = new Command("Geri", Command.BACK, 0);
 	
 	/* (non-Javadoc)
 	 * @see javax.microedition.midlet.MIDlet#destroyApp(boolean)
